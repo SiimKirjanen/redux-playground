@@ -2,15 +2,15 @@ import React from 'react'
 import type { RootState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrement, increment } from '../../slices/counter/counterSlice';
+import Box from '../Box';
 
 const Counter = () => {
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
 
   return (
-    <div className="box">
-        <div className='title'>Counter</div>
-        <button
+    <Box title='Counter'>
+      <button
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
@@ -23,7 +23,7 @@ const Counter = () => {
         >
           Decrement
         </button>
-    </div>
+    </Box>
   )
 }
 

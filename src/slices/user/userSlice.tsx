@@ -4,11 +4,13 @@ import { AppDispatch } from '../../store';
 import { User } from '../../interfaces/User';
 
 export interface userState {
-    users: User[]
+    users: User[],
+    loading: Boolean
 };
 
 const initialState: userState = {
   users: [],
+  loading: false
 };
 
 export const userSlice = createSlice({
@@ -17,17 +19,22 @@ export const userSlice = createSlice({
   reducers: {
     setUsers: (state, action: PayloadAction<User[]>) => {
       state.users = action.payload
+      state.loading = false
     },
+    setLoading: (state) => {
+      state.loading = true;
+    }
   },
 });
 
-export const { setUsers } = userSlice.actions;
+export const { setUsers, setLoading } = userSlice.actions;
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
+  dispatch( setLoading() );
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const data = await response.json();
 
-  dispatch( setUsers(data) )
+  dispatch( setUsers(data) );
 };
 
 export default userSlice.reducer;

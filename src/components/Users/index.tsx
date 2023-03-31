@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import type { AppDispatch, RootState } from '../../store';
 import { fetchUsers } from '../../slices/user/userSlice';
 import { User } from '../../interfaces/User';
+import Box from '../Box';
 
 const NoUsers = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -28,18 +29,24 @@ const UserList = ({users}: userListProps) => {
 
 const Users = () => {
     const users: User[] = useSelector((state: RootState) => state.user.users);
+    const loading = useSelector((state: RootState) => state.user.loading);
+
+    if(loading) {
+        return(
+            <Box title='Users'>
+                Loadig...
+            </Box>
+        )
+    }
 
     return(
-        <div className='box'>
-            <div className='title'>Users</div>
-
+        <Box title='Users'>
             { users.length ? (
                 <UserList users={users} />
             ) : (
               <NoUsers />
             ) }
-
-        </div>
+        </Box>
     );
 }
 
