@@ -3,12 +3,13 @@ import type { RootState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrement, increment } from '../../slices/counter/counterSlice';
 
-export function Counter() {
+const Counter = () => {
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
 
   return (
-    <div>
+    <div className="box">
+        <div className='title'>Counter</div>
         <button
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
@@ -25,3 +26,5 @@ export function Counter() {
     </div>
   )
 }
+
+export default Counter;
