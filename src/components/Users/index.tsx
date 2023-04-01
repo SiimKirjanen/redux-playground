@@ -1,11 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux';
-import type { AppDispatch, RootState } from '../../store';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
 import { fetchUsers } from '../../slices/user/userSlice';
 import { User } from '../../interfaces/User';
 import Box from '../Box';
 
 const NoUsers = () => {
-    const dispatch: AppDispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     return(
         <>
@@ -28,8 +28,7 @@ const UserList = ({users}: userListProps) => {
 };
 
 const Users = () => {
-    const users: User[] = useSelector((state: RootState) => state.user.users);
-    const loading = useSelector((state: RootState) => state.user.loading);
+    const { users, loading } = useSelector((state: RootState) => state.user);
 
     if(loading) {
         return(

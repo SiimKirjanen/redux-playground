@@ -1,12 +1,12 @@
 import React from 'react'
-import type { RootState } from '../../store';
-import { useSelector, useDispatch } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
+import { useSelector } from 'react-redux';
 import { decrement, increment } from '../../slices/counter/counterSlice';
 import Box from '../Box';
 
 const Counter = () => {
   const count = useSelector((state: RootState) => state.counter.value)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   return (
     <Box title='Counter'>
