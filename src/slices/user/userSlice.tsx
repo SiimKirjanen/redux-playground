@@ -5,7 +5,7 @@ import { User } from '../../interfaces/User';
 
 export interface userState {
     users: User[],
-    loading: Boolean
+    loading: boolean
 };
 
 const initialState: userState = {
