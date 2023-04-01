@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Product } from '../../interfaces/Product';
-import { fetchProducts } from '../../slices/product/productSlice';
+import { fetchProducts, highestPriceItemSelector } from '../../slices/product/productSlice';
 import { RootState, useAppDispatch } from '../../store';
 import Box from '../Box';
 
@@ -20,16 +20,21 @@ interface productListProps {
 };
 
 const ProductsList = ({products}: productListProps) => {
+    const highestPriceProduct = useSelector(highestPriceItemSelector);
+
     return(
-        <ul>
-            {products.map((product: Product) => <li key={product.id}>{product.title}</li>)}
-        </ul>
+        <>
+            <ul>
+                {products.map((product: Product) => <li key={product.id}>{product.title} - {product.price}</li>)}
+            </ul>
+            Highest price product is:  { highestPriceProduct.title } - { highestPriceProduct.price }
+        </>
     )
 };
 
 const Products = () => {
     const { products, loading, error } = useSelector((state: RootState) => state.product);
-
+    
     if(loading) {
         return (
             <Box title='Products'>

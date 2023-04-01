@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
 import { Product } from '../../interfaces/Product';
+import { RootState } from '../../store';
 
 export interface productState {
     products: Product[],
@@ -40,5 +41,12 @@ export const productSlice = createSlice({
     })
   },
 });
+
+export const highestPriceItemSelector = createSelector(
+  (state: RootState) => state.product.products,
+  (products: Product[]) => products.reduce((prev: Product, current: Product) => {
+    return (prev.price > current.price) ? prev : current
+  } )
+);
 
 export default productSlice.reducer;
