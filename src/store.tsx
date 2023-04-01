@@ -5,12 +5,14 @@ import logger from 'redux-logger';
 import counterReducer from './slices/counter/counterSlice';
 import userReducer from './slices/user/userSlice';
 import productReducer  from './slices/product/productSlice';
+import postReducer  from './slices/post/postsSlice';
 
 const store = configureStore({
   reducer: {
     counter: counterReducer,
     user: userReducer,
-    product: productReducer
+    product: productReducer,
+    post: postReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

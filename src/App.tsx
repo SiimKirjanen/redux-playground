@@ -4,6 +4,7 @@ import './App.css';
 import Users from './components/Users';
 import Counter from './components/Counter';
 import Products from './components/Products';
+import Posts from './components/Posts';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Counter />
       <Users />
       <Products />
+      <Posts />
     </div>
   );
 }
