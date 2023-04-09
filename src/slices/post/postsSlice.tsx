@@ -40,7 +40,6 @@ export const postsSlice = createSlice({
     })
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.loading = false;
-      console.log(action.payload)
       postsAdapter.setAll(state, action.payload);
     })
     builder.addCase(fetchPosts.rejected, (state, action) => {
