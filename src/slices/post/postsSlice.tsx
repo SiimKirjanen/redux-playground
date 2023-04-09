@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { AppDispatch, RootState } from '../../store';
-import { User } from '../../interfaces/User';
+import { RootState } from '../../store';
 import { Post } from '../../interfaces/Post';
 
 export interface state {
