@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import logger from 'redux-logger';
 
 import counterReducer from './slices/counter/counterSlice';
+import { counterReducer as counter2Reducer } from './reducers/counter';
 import userReducer from './slices/user/userSlice';
 import productReducer  from './slices/product/productSlice';
 import postReducer  from './slices/post/postsSlice';
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   counter: counterReducer,
   user: userReducer,
   product: productReducer,
-  post: postReducer
+  post: postReducer,
+  counter2: counter2Reducer,
 });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
