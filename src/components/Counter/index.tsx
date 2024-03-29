@@ -1,30 +1,30 @@
-import React from 'react'
-import { RootState, useAppDispatch } from '../../store';
-import { useSelector } from 'react-redux';
-import { decrement, increment } from '../../slices/counter/counterSlice';
-import Box from '../Box';
+import React from "react";
+import { useAppDispatch } from "../../hooks";
+import { decrement, increment } from "../../slices/counter/counterSlice";
+import Box from "../Box";
+import { useAppSelector } from "../../hooks";
 
 const Counter = () => {
-  const count = useSelector((state: RootState) => state.counter.value)
-  const dispatch = useAppDispatch()
+  const count = useAppSelector((state) => state.counter.value);
+  const dispatch = useAppDispatch();
 
   return (
-    <Box title='Counter'>
+    <Box title="Counter">
       <button
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          Increment
-        </button>
-        <span>{count}</span>
-        <button
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          Decrement
-        </button>
+        aria-label="Increment value"
+        onClick={() => dispatch(increment())}
+      >
+        Increment
+      </button>
+      <span>{count}</span>
+      <button
+        aria-label="Decrement value"
+        onClick={() => dispatch(decrement())}
+      >
+        Decrement
+      </button>
     </Box>
-  )
-}
+  );
+};
 
 export default Counter;

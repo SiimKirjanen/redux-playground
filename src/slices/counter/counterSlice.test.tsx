@@ -1,5 +1,3 @@
-// counterSlice.test.ts
-
 import {
   increment,
   decrement,
